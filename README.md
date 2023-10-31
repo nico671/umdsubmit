@@ -1,12 +1,6 @@
 # UmdSubmit
 
-![UmdSubmit Logo](https://path_to_your_logo.png)
-
 UmdSubmit is a tool designed to simplify the process of submitting assignments at the University of Maryland. It streamlines the submission process, making it easier for students, allowing users to submit anywhere from the command line rather than having to use the Eclipse Plugin.
-
-## Features
-
-- **Efficient Submission:** UmdSubmit provides a straightforward interface for students to submit assignments.
 
 ## Getting Started
 
