@@ -1,6 +1,7 @@
 import os
 import requests
 import shutil
+import getpass
 
 def get_info(lineStart):
     f = open(".submit", "r")
@@ -43,8 +44,7 @@ def walk_and_add_files(zip_writer):
 def auth():
     print("Enter UMD Directory ID: ")
     username = input()
-    print("Enter UMD Password: ")
-    password = input()
+    password = getpass.getpass("Enter UMD Password: ")
     data = {"loginName" : username, "password" : password, "courseKey" : get_info("courseKey"), "projectNumber" : get_info("projectNumber")}
     url_part = f"/eclipse/NegotiateOneTimePassword"
     response = requests.post(get_info("baseURL") + url_part, data = data)
@@ -65,4 +65,3 @@ def main():
     data = {"courseName" : get_info("courseName"), "projectNumber" : get_info("projectNumber"), "semester" : get_info("semester"), "courseKey" : get_info("courseKey"), "authentication.type" : get_info("authentication.type"), "baseURL" : get_info("baseURL"), "submitURL" : get_info("submitURL"), "cvsAccount" : get_cvs_account(), "oneTimePassword" : get_one_time_password(), "submitClientTool" : "umdsubmit", "submitClientVersion" : "1.0"}
     response = requests.post(get_info("submitURL"), files = files, data = data)
     print(response.text)
-    os.remove("submit.zip")
