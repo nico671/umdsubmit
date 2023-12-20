@@ -19,6 +19,7 @@ pip install umdsubmit --upgrade
 ```
 
 ## Usage
+
 After installing navigate to the root of the project directory in the terminal and run the command umdsubmit. Enter your UMD Directory ID and password as requested. Ensure that you run the command from the directory containing the .submit file for the project.
 
 ## How It Works
@@ -42,6 +43,6 @@ After installing navigate to the root of the project directory in the terminal a
    - A POST request is made to the server to negotiate a one-time password.
    - The server's response is written to the `.submitUser` file and printed to the console.
 
-7. **Submission:**
+6. **Submission:**
    - A POST request is made to the submit URL with the zip file and the gathered data.
    - The server's response is printed to the console.
