@@ -10,9 +10,9 @@ You can install the package via pip:
 pip install umdsubmit
 ```
 
-## Updates
+## Updating
 
-Upgrade the package via pip:
+The package can be upgraded via pip:
 
 ```sh
 pip install umdsubmit --upgrade
