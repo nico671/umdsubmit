@@ -10,6 +10,14 @@ You can install the package via pip:
 pip install umdsubmit
 ```
 
+## Updates
+
+Upgrade the package via pip:
+
+```sh
+pip install umdsubmit --upgrade
+```
+
 ## Usage
 After installing navigate to the root of the project directory in the terminal and run the command umdsubmit. Enter your UMD Directory ID and password as requested. Ensure that you run the command from the directory containing the .submit file for the project.
 
