@@ -100,6 +100,8 @@ def main():
     Main function that creates a zip archive of the current directory,
     submits the archive to a specified URL, and prints the response.
     """
+    if not os.path.isfile('.submitUser'):
+        auth()
     shutil.make_archive('submit', 'zip', os.getcwd())
     submit_zip_object =  open('submit.zip', 'rb')
     files = {"submittedFiles": ("submit.zip", submit_zip_object)}
