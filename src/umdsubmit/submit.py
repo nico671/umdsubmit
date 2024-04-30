@@ -85,6 +85,7 @@ def auth():
     Authenticates the user by prompting for UMD Directory ID and password,
     and saves the authentication response to the .submitUser file.
     """
+    os.remove(".submitUser") if os.path.exists(".submitUser") else None
     print("Enter UMD Directory ID: ")
     username = input()
     password = getpass.getpass("Enter UMD Password: ")
@@ -100,11 +101,12 @@ def main():
     Main function that creates a zip archive of the current directory,
     submits the archive to a specified URL, and prints the response.
     """
-    if not os.path.isfile('.submitUser'):
-        auth()
+    auth()
     shutil.make_archive('submit', 'zip', os.getcwd())
     submit_zip_object =  open('submit.zip', 'rb')
     files = {"submittedFiles": ("submit.zip", submit_zip_object)}
     data = {"courseName" : get_info("courseName"), "projectNumber" : get_info("projectNumber"), "semester" : get_info("semester"), "courseKey" : get_info("courseKey"), "authentication.type" : get_info("authentication.type"), "baseURL" : get_info("baseURL"), "submitURL" : get_info("submitURL"), "cvsAccount" : get_cvs_account(), "oneTimePassword" : get_one_time_password(), "submitClientTool" : "umdsubmit", "submitClientVersion" : "1.0"}
     response = requests.post(get_info("submitURL"), files = files, data = data)
+    if response.status_code != 200:
+        print("Authentication failed. Please try again")
     print(response.text)
