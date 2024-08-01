@@ -44,26 +44,18 @@ export class UmdSubProjProvider implements vscode.TreeDataProvider<Project> {
             res.push(new Project(element.fsPath, vscode.TreeItemCollapsibleState.None, {
                 command: 'umdsubmit.submit',
                 title: '',
-                arguments: [element.fsPath]
+                arguments: [element.fsPath.split("/.sub")[0]]
             }));
         });
         res.sort();
         return res;
     }
 
-    private submit(path: string) {
+    submit(path: string) {
         console.log(path);
     }
 
-    private pathExists(p: string): boolean {
-        try {
-            fs.accessSync(p);
-        } catch (err) {
-            return false;
-        }
 
-        return true;
-    }
 }
 
 export class Project extends vscode.TreeItem {
@@ -76,7 +68,7 @@ export class Project extends vscode.TreeItem {
     ) {
         let label = "oops";
         let contents = fs.readFileSync(path, 'utf8').split(/[\r\n]+/);
-        console.log(contents);
+        // console.log(contents);
         for (const line of contents) {
             if (line.includes("projectNumber")) {
                 label = line.split('=')[1];
@@ -86,6 +78,7 @@ export class Project extends vscode.TreeItem {
 
         this.description = `${contents[1].split("Course")[1]}-${contents[2].substring(10)}`;
         // this.description = contents;
+        this.command = command;
     }
 
     // iconPath = {

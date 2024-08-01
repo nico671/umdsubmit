@@ -14,7 +14,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "umdsubmit-vscode.helloWorld",
+        "command": "umdsubmit.helloWorld",
         "title": "Hello World"
       }
     ],
@@ -28,7 +28,7 @@
       "commands": [
         {
           "command": "umdsubmit.submit",
-          "title": "Refresh",
+          "title": "Submit",
           "icon": {
             "light": "resources/light/refresh.svg",
             "dark": "resources/dark/refresh.svg"
