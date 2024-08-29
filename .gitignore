@@ -1,8 +1,3 @@
-pip_module/poetry.lock
-pip_module/pyproject.toml
-pip_module/dist
-vscode_extension/out
-vscode_extension/dist
-vscode_extension/node_modules
-vscode_extension/.vscode-test/
-vscode_extension/*.vsix
+README_files/
+dist/
+README.html
