@@ -120,7 +120,6 @@ def main():
     data = {"courseName": get_info("courseName"), "projectNumber": get_info("projectNumber"), "semester": get_info("semester"), "courseKey": get_info("courseKey"), "authentication.type": get_info(
         "authentication.type"), "baseURL": get_info("baseURL"), "submitURL": get_info("submitURL"), "cvsAccount": get_cvs_account(), "oneTimePassword": get_one_time_password(), "submitClientTool": "umdsubmit", "submitClientVersion": "1.0"}
     response = requests.post(get_info("submitURL"), files=files, data=data)
-    # response.text
     if response.status_code != 200:
         print(f"Authentication failed. Please try again\n Error Code: {
               response.status_code}\n Response Text: {response.text}")
